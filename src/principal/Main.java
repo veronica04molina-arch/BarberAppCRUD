@@ -1,12 +1,22 @@
 package principal;
 
-import conexion.ConexionBD;
+import dao.UsuarioDAO;
+import modelo.Usuario;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        ConexionBD.conectar();
+        Usuario usuario = new Usuario(
+                "Veronica Molina",
+                "veronica@gmail.com",
+                "123456",
+                "barbero",
+                "3001234567"
+        );
 
+        UsuarioDAO dao = new UsuarioDAO();
+
+        dao.insertar(usuario);
     }
 }
