@@ -71,4 +71,35 @@ public void listar() {
         );
     }
 }
+
+public void actualizar(int id, String telefono) {
+
+    String sql =
+            "UPDATE usuario " +
+            "SET telefono=? " +
+            "WHERE id=?";
+
+    try {
+
+        Connection con = ConexionBD.conectar();
+
+        PreparedStatement ps =
+                con.prepareStatement(sql);
+
+        ps.setString(1, telefono);
+        ps.setInt(2, id);
+
+        ps.executeUpdate();
+
+        System.out.println(
+                "Usuario actualizado correctamente"
+        );
+
+    } catch (Exception e) {
+
+        System.out.println(
+                "Error: " + e.getMessage()
+        );
+    }
+}
 }
