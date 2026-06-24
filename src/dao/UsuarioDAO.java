@@ -3,6 +3,7 @@ package dao;
 import conexion.ConexionBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import modelo.Usuario;
 
 public class UsuarioDAO {
@@ -39,5 +40,35 @@ public void insertar(Usuario usuario) {
                 "Error: " + e.getMessage()
         );
         }
+}
+
+public void listar() {
+
+    String sql = "SELECT * FROM usuario";
+
+    try {
+
+        Connection con = ConexionBD.conectar();
+
+        PreparedStatement ps =
+                con.prepareStatement(sql);
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+
+            System.out.println(
+                "ID: " + rs.getInt("id") +
+                " | Nombre: " + rs.getString("nombre") +
+                " | Email: " + rs.getString("email")
+            );
+        }
+
+    } catch (Exception e) {
+
+        System.out.println(
+            "Error: " + e.getMessage()
+        );
+    }
 }
 }
