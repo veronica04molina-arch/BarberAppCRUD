@@ -102,4 +102,33 @@ public void actualizar(int id, String telefono) {
         );
     }
 }
+
+public void eliminar(int id){
+        
+    String sql =
+            "DELETE FROM usuario " +
+            "WHERE id=?";
+
+    try {
+
+        Connection con = ConexionBD.conectar();
+
+        PreparedStatement ps =
+                con.prepareStatement(sql);
+
+        ps.setInt(1, id);
+
+        ps.executeUpdate();
+
+        System.out.println(
+                "Usuario eliminado correctamente"
+        );
+
+    } catch (Exception e) {
+
+        System.out.println(
+                "Error: " + e.getMessage()
+        );
+    }
+}
 }

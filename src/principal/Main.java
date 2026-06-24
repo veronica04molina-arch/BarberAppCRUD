@@ -7,9 +7,6 @@ public class Main {
 
         UsuarioDAO dao = new UsuarioDAO();
 
-        dao.actualizar(
-                1,
-                "3119876545"
-        );
+        dao.eliminar(1);
     }
 }
